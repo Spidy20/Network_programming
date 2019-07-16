@@ -1,18 +1,17 @@
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((" ", 100))
+s.bind((" ", 1820))
 print('server created')
 s.listen(10)
 c, addr = s.accept()
-print('{} connected.'.format(addr))
+print('COnncected',addr)
 
-f = open("ML.rar", "rb")
+f = open("v.mp4", "rb")
 datas = f.read(1024)
 
 while datas:
-    c.send(datas)
     datas = f.read(1024)
-
+    c.send(datas)
 f.close()
 print("Done sending...")
