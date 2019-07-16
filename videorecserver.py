@@ -19,7 +19,12 @@ print ('Socket now listening')
 conn,addr=s.accept()
 data = b''
 payload_size = struct.calcsize("L")
+cap=cv2.VideoCapture(0)
 while True:
+    ret,frame=cap.read()
+    dat = pickle.dumps(frame)
+    conn.sendall(struct.pack("L", len(dat))+dat)
+
     while len(data) < payload_size:
         data += conn.recv(4096)
     packed_msg_size = data[:payload_size]
