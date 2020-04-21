@@ -6,8 +6,7 @@ print('server created')
 s.listen(10)
 c, addr = s.accept()
 print('COnncected',addr)
-
-f = open("v.mp4", "rb")
+f = open("phir.mp3", "rb")
 datas = f.read(1024)
 
 while datas:
